@@ -18,8 +18,12 @@ print('We have generated {} elements'.format(x))
 
 print('-'*50)
 
-flights = [(a,b) for a in ports for b in ports if a < b]
 x=1
-for i in flights:
+flights = ((a,b) for a in ports for b in ports if a < b)
+while True:
     x+=1
-print('We have generated {} elements'.format(x))
+    try:
+        print(next(flights))
+    except StopIteration:
+        print('{} values have been generated'.format(x))
+        break
